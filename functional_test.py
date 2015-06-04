@@ -22,7 +22,11 @@ class SimpleListTest(unittest.TestCase):
             inputbox.get_attribute('placeholder'), 'Enter a to-do item')
         inputbox.send_keys('Buy peackock feathers')
         inputbox.send_keys('\n')
-
+        table = self.browser.find_element_by_id('id_list_table')
+        rows = table.find_elements_by_tag_name('tr')
+        self.assertIn(
+            '1: Buy peacock feathers',
+            rows)
 
 if __name__ == '__main__':
     unittest.main(warnings='ignore')
