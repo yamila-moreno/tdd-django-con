@@ -23,7 +23,6 @@ class SimpleListTest(unittest.TestCase):
         inputbox.send_keys('Buy peackock feathers')
         inputbox.send_keys('\n')
 
-        self.fail('Finish the test!')
 
 if __name__ == '__main__':
     unittest.main(warnings='ignore')
