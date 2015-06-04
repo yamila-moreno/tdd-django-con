@@ -1,6 +1,7 @@
 import unittest
 
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 
 class SimpleListTest(unittest.TestCase):
 
@@ -21,12 +22,13 @@ class SimpleListTest(unittest.TestCase):
         self.assertEqual(
             inputbox.get_attribute('placeholder'), 'Enter a to-do item')
         inputbox.send_keys('Buy peackock feathers')
-        inputbox.send_keys('\n')
+        inputbox.send_keys(Keys.ENTER)
+
         table = self.browser.find_element_by_id('id_list_table')
         rows = table.find_elements_by_tag_name('tr')
-        self.assertIn(
-            '1: Buy peacock feathers',
-            rows)
+        self.assertTrue(
+            any(row.text == '1: Buy peacock feathers' for row in rows)
+        )
 
 if __name__ == '__main__':
     unittest.main(warnings='ignore')
