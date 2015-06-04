@@ -12,4 +12,5 @@ class HomePageTest(TestCase):
         response = home_page(request)
         self.assertTrue(response.content.startswith(b'<html>'))
         self.assertIn('<title>To-Do Lists</title>', response.content.decode())
-        self.assertTrue(response.content.endswith(b'</html>'))
+        print(response.content)
+        self.assertTrue(response.content.strip().endswith(b'</html>'))
